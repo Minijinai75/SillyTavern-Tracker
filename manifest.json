@@ -3,9 +3,9 @@
 	"loading_order": 1,
 	"requires": [],
 	"optional": [],
-	"js": "index.js",
-	"css": "style.css",
+	"js": "src/index.js",
+	"css": "style/style.css",
 	"author": "Kaldigo",
-	"version": "0.0.2",
-	"homePage": "https://github.com/Kaldigo"
+	"version": "0.1.0",
+	"homePage": "https://github.com/kaldigo/SillyTavern-Tracker"
 }

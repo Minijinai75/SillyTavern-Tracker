@@ -1,4 +1,6 @@
 jsconfig.json
 .eslintrc.json
 .vscode/
+.idea/
 bak/
+docs/BUILD-CHECKLIST.md
