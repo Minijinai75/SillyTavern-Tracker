@@ -187,7 +187,7 @@ export class TrackerContentRenderer {
 			textarea.addEventListener("input", (event) => {
 				let newValue = event.target.value.replace(/"/g, "'");
 				if (newValue !== event.target.value) {
-					toastr.warning("Double quotes are not allowed and have been replaced with single quotes.");
+					toastr.warning("不允許使用雙引號，已自動替換為單引號。");
 					event.target.value = newValue;
 				}
 				onChange(newValue);
@@ -230,7 +230,7 @@ export class TrackerContentRenderer {
 
 							const removeButton = document.createElement("button");
 							removeButton.className = "menu_button interactable";
-							removeButton.textContent = "Remove";
+							removeButton.textContent = "移除";
 							removeButton.addEventListener("click", () => {
 								arrayValue.splice(index, 1);
 								onUpdate(tracker);
@@ -243,7 +243,7 @@ export class TrackerContentRenderer {
 
 						const addButton = document.createElement("button");
 						addButton.className = "menu_button interactable";
-						addButton.textContent = "Add Item";
+						addButton.textContent = "新增項目";
 						addButton.addEventListener("click", () => {
 							arrayValue.push("");
 							onUpdate(tracker);
@@ -305,7 +305,7 @@ export class TrackerContentRenderer {
 							// Remove button for each item
 							const removeButton = document.createElement("button");
 							removeButton.className = "menu_button interactable";
-							removeButton.textContent = "Remove";
+							removeButton.textContent = "移除";
 							removeButton.addEventListener("click", () => {
 								delete objectValue[nestedKey];
 								onUpdate(tracker);
@@ -324,13 +324,13 @@ export class TrackerContentRenderer {
 						// Add Item button
 						const addButton = document.createElement("button");
 						addButton.className = "menu_button interactable";
-						addButton.textContent = "Add Item";
+						addButton.textContent = "新增項目";
 						addButton.addEventListener("click", () => {
 							// Prompt the user for the key
-							const newKey = prompt("Enter key for new item:");
+							const newKey = prompt("請輸入新項目的鍵值：");
 							if (newKey) {
 								if (Object.prototype.hasOwnProperty.call(objectValue, newKey)) {
-									alert("An item with that key already exists.");
+									alert("已存在相同鍵值的項目。");
 								} else {
 									// Create a new object with default values from the schema
 									const newObject = createDefaultValues(fieldSchema.nestedFields);
@@ -349,7 +349,7 @@ export class TrackerContentRenderer {
 									// Remove button for the new item
 									const removeButton = document.createElement("button");
 									removeButton.className = "menu_button interactable";
-									removeButton.textContent = "Remove";
+									removeButton.textContent = "移除";
 									removeButton.addEventListener("click", () => {
 										delete objectValue[newKey];
 										onUpdate(tracker);
@@ -423,7 +423,7 @@ export class TrackerContentRenderer {
 
 							const removeKeyButton = document.createElement("button");
 							removeKeyButton.className = "menu_button interactable";
-							removeKeyButton.textContent = "Remove Key";
+							removeKeyButton.textContent = "移除鍵值";
 							removeKeyButton.addEventListener("click", () => {
 								delete objectValue[nestedKey];
 								onUpdate(tracker);
@@ -464,7 +464,7 @@ export class TrackerContentRenderer {
 
 								const removeItemButton = document.createElement("button");
 								removeItemButton.className = "menu_button interactable";
-								removeItemButton.textContent = "Remove Item";
+								removeItemButton.textContent = "移除項目";
 								removeItemButton.addEventListener("click", () => {
 									arrayValue.splice(arrIndex, 1);
 									onUpdate(tracker);
@@ -477,7 +477,7 @@ export class TrackerContentRenderer {
 
 							const addItemButton = document.createElement("button");
 							addItemButton.className = "menu_button interactable";
-							addItemButton.textContent = "Add Item";
+							addItemButton.textContent = "新增項目";
 							addItemButton.addEventListener("click", () => {
 								arrayValue.push(createDefaultArrayItem());
 								onUpdate(tracker);
@@ -492,12 +492,12 @@ export class TrackerContentRenderer {
 						// Add Key button
 						const addKeyButton = document.createElement("button");
 						addKeyButton.className = "menu_button interactable";
-						addKeyButton.textContent = "Add Key";
+						addKeyButton.textContent = "新增鍵值";
 						addKeyButton.addEventListener("click", () => {
-							const newKey = prompt("Enter key for new array:");
+							const newKey = prompt("請輸入新陣列的鍵值：");
 							if (newKey) {
 								if (Object.prototype.hasOwnProperty.call(objectValue, newKey)) {
-									alert("A key with that name already exists.");
+									alert("已存在相同名稱的鍵值。");
 								} else {
 									objectValue[newKey] = [];
 									onUpdate(tracker);
@@ -608,7 +608,7 @@ export class TrackerContentRenderer {
 	 */
 	tokenizeTemplate(template) {
 		const tokens = [];
-		const regex = /{{\s*(\/?)\s*(#?)\s*([\w.]+|\^)\s*(.*?)\s*}}/g;
+		const regex = /{{\s*(\/?)s*(#?)\s*([\w.]+|\^)\s*(.*?)\s*}}/g;
 		let cursor = 0;
 		let match;
 
