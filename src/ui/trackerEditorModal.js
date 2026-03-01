@@ -71,7 +71,7 @@ export class TrackerEditorModal {
 		// Save Button
 		const saveButton = document.createElement("button");
 		saveButton.className = "tracker-modal-save-button menu_button interactable";
-		saveButton.textContent = "Save";
+		saveButton.textContent = "儲存";
 		saveButton.onclick = () => {
 			this.close(true);
 		};
@@ -80,7 +80,7 @@ export class TrackerEditorModal {
 		// Cancel Button
 		const cancelButton = document.createElement("button");
 		cancelButton.className = "tracker-modal-cancel-button menu_button interactable";
-		cancelButton.textContent = "Cancel";
+		cancelButton.textContent = "取消";
 		cancelButton.onclick = () => {
 			this.close(false);
 		};
@@ -97,9 +97,9 @@ export class TrackerEditorModal {
 	 */
 	updateContent() {
 		if (this.mesId) {
-			this.modalContent.innerHTML = '<h3 class="tracker-modal-title">Edit Tracker for Message ' + this.mesId + '</h3>';
+			this.modalContent.innerHTML = '<h3 class="tracker-modal-title">編輯訊息 ' + this.mesId + ' 的追蹤器</h3>';
 		} else {
-			this.modalContent.innerHTML = '<h3 class="tracker-modal-title">Edit Tracker</h3>';
+			this.modalContent.innerHTML = '<h3 class="tracker-modal-title">編輯追蹤器</h3>';
 		}
 
 		// Generate the editor view
