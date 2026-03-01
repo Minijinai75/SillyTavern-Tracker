@@ -2,61 +2,61 @@
 <div id="tracker_settings" class="extension_container">
 	<div class="inline-drawer">
 		<div class="inline-drawer-toggle inline-drawer-header">
-			<b>Tracker</b>
+			<b>追蹤器</b>
 			<div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div>
 		</div>
 		<div class="inline-drawer-content">
 			<!-- Tracker Settings -->
 			<div class="tracker-block flex-container">
 				<input id="tracker_enable" type="checkbox" />
-				<label for="tracker_enable">Enable Tracker</label>
+				<label for="tracker_enable">啟用追蹤器</label>
 			</div>
 			<hr class="sysHR" />
 
 			<!-- Connection Profile -->
 			<div class="tracker-block m-b-1 m-t-1">
-				<label for="tracker_connection_profile">Connection Profile</label><br />
-				<small>Override connection profile for tracker generation:</small><br />
+				<label for="tracker_connection_profile">連線設定檔</label><br />
+				<small>覆寫用於追蹤器生成的連線設定檔：</small><br />
 				<select id="tracker_connection_profile" class="text_pole">
-					<option value="current">Same as current</option>
+					<option value="current">與目前相同</option>
 				</select>
 			</div>
 
 			<!-- Completion Preset -->
 			<div class="tracker-block m-b-1 m-t-1">
-				<label for="tracker_completion_preset">Completion preset</label><br />
+				<label for="tracker_completion_preset">補全預設詞</label><br />
 				<small>
-					Override completion preset for tracker generation: <br />
-					(For Chat Completion Profiles, Make sure the preset has the same Chat completion Source as the profile)
+					覆寫用於追蹤器生成的補全預設詞：<br />
+					（Chat Completion 設定檔請確認補全來源與設定檔一致）
 				</small><br />
 				<select id="tracker_completion_preset" class="text_pole">
-					<option value="current">Same as current</option>
+					<option value="current">與目前相同</option>
 				</select>
 			</div>
 
 			<!-- Generation Target -->
 			<div class="tracker-block m-b-1 m-t-1">
-				<label for="tracker_generation_target">Generation Target</label><br />
-				<small>Specifies who the tracker should auto-generate for: User, Character, Both, or None.</small><br />
+				<label for="tracker_generation_target">生成目標</label><br />
+				<small>指定追蹤器自動生成的對象：使用者、角色、兩者或不生成。</small><br />
 				<select id="tracker_generation_target" class="text_pole">
-					<option value="both">Both</option>
-					<option value="user">User</option>
-					<option value="character">Character</option>
-					<option value="none">None</option>
+					<option value="both">兩者</option>
+					<option value="user">使用者</option>
+					<option value="character">角色</option>
+					<option value="none">不生成</option>
 				</select>
 			</div>
 			<!-- Show Popup For -->
 			<div class="tracker-block m-b-1 m-t-1">
-				<label for="tracker_show_popup_for">Show Popup For</label><br />
-				<small>Specifies for who there should be a popup to manualy enter the tracker data: User, Character, Both, or None.</small><br />
+				<label for="tracker_show_popup_for">顯示彈窗對象</label><br />
+				<small>指定需要手動輸入追蹤資料的彈窗對象：使用者、角色、兩者或不顯示。</small><br />
 				<select id="tracker_show_popup_for" class="text_pole">
 					<!-- Options will be populated dynamically -->
 				</select>
 			</div>
 			<!-- Tracker Format -->
 			<div class="tracker-block m-b-1 m-t-1">
-				<label for="tracker_format">Tracker Format</label><br />
-				<small>Choose the format for the tracker: YAML (recommended for lower token usage) or JSON (increases token count but may work better for struggling models).</small><br />
+				<label for="tracker_format">追蹤器格式</label><br />
+				<small>選擇追蹤器格式：YAML（建議，Token 消耗較少）或 JSON（Token 較多，但對部分模型相容性更佳）。</small><br />
 				<select id="tracker_format" class="text_pole">
 					<option value="JSON">JSON</option>
 					<option value="YAML">YAML</option>
@@ -67,146 +67,146 @@
 			<!-- Preset Management -->
 			<div id="preset_settings">
 				<div class="tracker-block m-b-1 m-t-1">
-					<label for="tracker_preset_select">Presets</label>
+					<label for="tracker_preset_select">預設組合</label>
 					<select id="tracker_preset_select" class="text_pole">
 						<!-- Options will be populated dynamically -->
 					</select>
 					<div class="tracker-preset-buttons">
-						<button id="tracker_preset_new" class="menu_button fa-solid fa-file-circle-plus interactable" title="Save preset as"></button>
-						<button id="tracker_preset_save" class="menu_button fa-solid fa-save interactable" title="Update current preset"></button>
-						<button id="tracker_preset_rename" class="menu_button fa-pencil fa-solid interactable" title="Rename current preset"></button>
-						<button id="tracker_preset_restore" class="menu_button fa-solid fa-recycle interactable" title="Restore current preset"></button>
-						<button id="tracker_preset_delete" class="menu_button fa-solid fa-trash-can interactable" title="Delete current preset"></button>
+						<button id="tracker_preset_new" class="menu_button fa-solid fa-file-circle-plus interactable" title="另存為新預設"></button>
+						<button id="tracker_preset_save" class="menu_button fa-solid fa-save interactable" title="更新目前預設"></button>
+						<button id="tracker_preset_rename" class="menu_button fa-pencil fa-solid interactable" title="重新命名預設"></button>
+						<button id="tracker_preset_restore" class="menu_button fa-solid fa-recycle interactable" title="還原預設"></button>
+						<button id="tracker_preset_delete" class="menu_button fa-solid fa-trash-can interactable" title="刪除預設"></button>
 						<input type="file" id="tracker_preset_import" style="display: none" accept=".json" />
-						<button id="tracker_preset_import_button" class="menu_button fa-solid fa-file-import interactable" title="Import tracker preset"></button>
-						<button id="tracker_preset_export" class="menu_button fa-solid fa-file-export interactable" title="Export current tracker preset"></button>
+						<button id="tracker_preset_import_button" class="menu_button fa-solid fa-file-import interactable" title="匯入追蹤器預設"></button>
+						<button id="tracker_preset_export" class="menu_button fa-solid fa-file-export interactable" title="匯出目前追蹤器預設"></button>
 					</div>
 				</div>
 			</div>
 			<hr class="sysHR" />
 
 			<details>
-				<summary>Preset Settings</summary>
+				<summary>預設詳細設定</summary>
 				<!-- Preset Related Fields -->
 				<div id="preset_related_fields">
 					<!-- Generation Mode -->
 					<div class="tracker-block m-b-1 m-t-1">
-						<label for="tracker_generation_mode">Generation Mode</label><br />
+						<label for="tracker_generation_mode">生成模式</label><br />
 						<small
-							>Select how the tracker updates:<br />
-							- Inline: Adds the tracker to the beginning of every message.<br />
-							- Single-Stage: Sends one prompt to update the tracker.<br />
-							- Two-Stage: First summarizes changes, then updates the tracker.</small
+							>選擇追蹤器更新方式：<br />
+							- 行內：在每則訊息開頭插入追蹤器。<br />
+							- 單階段：發送一次提詞更新追蹤器。<br />
+							- 兩階段：先摘要變更，再更新追蹤器。</small
 						><br />
 						<select id="tracker_generation_mode" class="text_pole">
-							<option value="inline">Inline</option>
-							<option value="single-stage">Single-Stage</option>
-							<option value="two-stage">Two-Stage</option>
+							<option value="inline">行內</option>
+							<option value="single-stage">單階段</option>
+							<option value="two-stage">兩階段</option>
 						</select>
 					</div>
 					<!-- Tracker Templates -->
 					<div id="generate_context_section" class="tracker-block m-b-1 m-t-1">
-						<label for="tracker_context_prompt">Context Template</label><br />
+						<label for="tracker_context_prompt">上下文範本</label><br />
 						<small
-							>Define the template for generating the tracker. Use macros like:<br />
-							{{trackerSystemPrompt}}, {{characterDescriptions}}, {{trackerExamples}}, {{recentMessages}}, {{currentTracker}}, {{trackerFormat}}, {{trackerFieldPrompt}}, {{firstStageMessage}} (Only in two stage mode).</small
+							>定義生成追蹤器的範本。可用巨集：<br />
+							{{trackerSystemPrompt}}, {{characterDescriptions}}, {{trackerExamples}}, {{recentMessages}}, {{currentTracker}}, {{trackerFormat}}, {{trackerFieldPrompt}}, {{firstStageMessage}}（僅限兩階段模式）。</small
 						><br />
 						<textarea id="tracker_context_prompt" class="text_pole" rows="5"></textarea>
 					</div>
 					<div class="tracker-block m-b-1 m-t-1">
-						<label for="tracker_system_prompt">System Prompt</label><br />
+						<label for="tracker_system_prompt">系統提詞</label><br />
 						<small
-							>Define the system-level prompt for tracker generation. Use macros like:<br />
-							{{charNames}}, {{defaultTracker}}, {{trackerFormat}}.</small
+							>定義追蹤器生成的系統層提詞。可用巨集：<br />
+							{{charNames}}, {{defaultTracker}}, {{trackerFormat}}。</small
 						><br />
 						<textarea id="tracker_system_prompt" class="text_pole" rows="5"></textarea>
 					</div>
 					<div class="tracker-block m-b-1 m-t-1">
-						<label for="tracker_request_prompt">Request Prompt</label><br />
+						<label for="tracker_request_prompt">請求提詞</label><br />
 						<small
-							>Set the request prompt for generating the tracker. Available macros include:<br />
-							{{trackerFieldPrompt}}, {{trackerFormat}}, {{message}} (last message), {{firstStageMessage}} (Two-Stage mode only).</small
+							>設定生成追蹤器的請求提詞。可用巨集：<br />
+							{{trackerFieldPrompt}}, {{trackerFormat}}, {{message}}（最後一則訊息）, {{firstStageMessage}}（僅限兩階段模式）。</small
 						><br />
 						<textarea id="tracker_request_prompt" class="text_pole" rows="5"></textarea>
 					</div>
 					<div class="tracker-block m-b-1 m-t-1">
-						<label for="tracker_recent_messages">Recent Messages Template</label><br />
+						<label for="tracker_recent_messages">近期訊息範本</label><br />
 						<small
-							>Template for recent messages in the tracker. Macros include:<br />
-							{{char}}, {{message}}, {{tracker}}, {{#if tracker}}...{{/if}}.</small
+							>近期訊息在追蹤器中的呈現範本。可用巨集：<br />
+							{{char}}, {{message}}, {{tracker}}, {{#if tracker}}...{{/if}}。</small
 						><br />
 						<textarea id="tracker_recent_messages" class="text_pole" rows="5"></textarea>
 					</div>
 					<div id="inline_request_section" class="tracker-block m-b-1 m-t-1">
-						<label for="tracker_inline_request_prompt">Inline Request Prompt</label><br />
+						<label for="tracker_inline_request_prompt">行內請求提詞</label><br />
 						<small
-							>Configure the prompt injected at the start of every message in Inline mode. Use macros like:<br />
-							{{trackerFieldPrompt}}, {{trackerFormat}}, {{message}}.</small
+							>設定行內模式中每則訊息開頭注入的提詞。可用巨集：<br />
+							{{trackerFieldPrompt}}, {{trackerFormat}}, {{message}}。</small
 						><br />
 						<textarea id="tracker_inline_request_prompt" class="text_pole" rows="5"></textarea>
 					</div>
 					<div id="message_summarization_section">
 						<div class="tracker-block m-b-1 m-t-1">
-							<label for="tracker_message_summarization_context_template">Message Summarization Context Template</label><br />
+							<label for="tracker_message_summarization_context_template">訊息摘要上下文範本</label><br />
 							<small
-								>Template used for summarizing the last message. Macros available:<br />
-								{{trackerSystemPrompt}}, {{characterDescriptions}}, {{trackerExamples}}, {{recentMessages}}, {{currentTracker}}, {{trackerFormat}}, {{trackerFieldPrompt}}, {{messageSummarizationSystemPrompt}}.</small
+								>用於摘要最後一則訊息的範本。可用巨集：<br />
+								{{trackerSystemPrompt}}, {{characterDescriptions}}, {{trackerExamples}}, {{recentMessages}}, {{currentTracker}}, {{trackerFormat}}, {{trackerFieldPrompt}}, {{messageSummarizationSystemPrompt}}。</small
 							><br />
 							<textarea id="tracker_message_summarization_context_template" class="text_pole" rows="5"></textarea>
 						</div>
 						<div class="tracker-block m-b-1 m-t-1">
-							<label for="tracker_message_summarization_system_prompt">Message Summarization System Prompt</label><br />
+							<label for="tracker_message_summarization_system_prompt">訊息摘要系統提詞</label><br />
 							<small
-								>System-level prompt for summarizing the last message. Available macros:<br />
-								{{charNames}}, {{defaultTracker}}, {{trackerFormat}}.</small
+								>摘要最後一則訊息的系統層提詞。可用巨集：<br />
+								{{charNames}}, {{defaultTracker}}, {{trackerFormat}}。</small
 							><br />
 							<textarea id="tracker_message_summarization_system_prompt" class="text_pole" rows="5"></textarea>
 						</div>
 						<div class="tracker-block m-b-1 m-t-1">
-							<label for="tracker_message_summarization_request_prompt">Message Summarization Request Prompt</label><br />
+							<label for="tracker_message_summarization_request_prompt">訊息摘要請求提詞</label><br />
 							<small
-								>Set the request prompt for summarizing the last message. Macros:<br />
-								{{trackerFieldPrompt}}, {{trackerFormat}}, {{message}}.</small
+								>設定摘要最後一則訊息的請求提詞。可用巨集：<br />
+								{{trackerFieldPrompt}}, {{trackerFormat}}, {{message}}。</small
 							><br />
 							<textarea id="tracker_message_summarization_request_prompt" class="text_pole" rows="5"></textarea>
 						</div>
 						<div class="tracker-block m-b-1 m-t-1">
-							<label for="tracker_recent_messages">Message Summarization Recent Messages Template</label><br />
+							<label for="tracker_recent_messages">訊息摘要近期訊息範本</label><br />
 							<small
-								>Template for recent messages in the tracker. Macros include:<br />
-								{{char}}, {{message}}, {{tracker}}, {{#if tracker}}...{{/if}}.</small
+								>追蹤器中近期訊息的呈現範本。可用巨集：<br />
+								{{char}}, {{message}}, {{tracker}}, {{#if tracker}}...{{/if}}。</small
 							><br />
 							<textarea id="tracker_message_summarization_recent_messages" class="text_pole" rows="5"></textarea>
 						</div>
 					</div>
 					<div class="tracker-block m-b-1 m-t-1">
-						<label for="tracker_character_description">Character Description Template</label><br />
+						<label for="tracker_character_description">角色描述範本</label><br />
 						<small
-							>Define the format for character descriptions in the tracker. Macros:<br />
-							{{char}}, {{charDescription}}.</small
+							>定義追蹤器中角色描述的格式。可用巨集：<br />
+							{{char}}, {{charDescription}}。</small
 						><br />
 						<textarea id="tracker_character_description" class="text_pole" rows="5"></textarea>
 					</div>
 					<div class="tracker-block m-b-1 m-t-1">
-						<label for="tracker_mes_tracker_template">Message Tracker HTML</label><br />
+						<label for="tracker_mes_tracker_template">訊息追蹤器 HTML</label><br />
 						<small
-							>Define the HTML for the tracker preview displayed with each message. Use macros like:<br />
-							{{key.subkey}}, {{#join "delimiter" arrayKey}}, {{#foreach objectOrArrayKey itemName}}...{{itemName.subKey}}...{{/foreach}}, {{#if key.subkey}}...{{/if}}.</small
+							>定義每則訊息旁顯示的追蹤器預覽 HTML。可用巨集：<br />
+							{{key.subkey}}, {{#join "delimiter" arrayKey}}, {{#foreach objectOrArrayKey itemName}}...{{itemName.subKey}}...{{/foreach}}, {{#if key.subkey}}...{{/if}}。</small
 						><br />
 						<textarea id="tracker_mes_tracker_template" class="text_pole" rows="5"></textarea>
 					</div>
 					<div class="tracker-block m-b-1 m-t-1">
-						<label for="tracker_mes_tracker_javascript">Message Tracker JavaScript</label><br />
+						<label for="tracker_mes_tracker_javascript">訊息追蹤器 JavaScript</label><br />
 						<small
-							>Define any custom javascript to be used in the tracker preview. The javascript should return an object with all the functions that can be accessed through SillyTavern.tracker</small
+							>定義追蹤器預覽中使用的自訂 JavaScript。腳本需回傳一個物件，包含可透過 SillyTavern.tracker 存取的所有函式。</small
 						><br />
 						<textarea id="tracker_mes_tracker_javascript" class="text_pole" rows="5"></textarea>
 					</div>
 					<!-- Prompt Maker Button -->
 					<div class="tracker-block flex-container">
-						<label for="tracker_prompt_maker">Prompt Maker UI</label><br />
-						<small>This is where the tracker fields, default values, and example values are defined.</small><br />
-						<input id="tracker_prompt_maker" class="menu_button" type="submit" value="Prompt Maker" />
+						<label for="tracker_prompt_maker">提詞製作工具 UI</label><br />
+						<small>在此定義追蹤欄位、預設值與範例值。</small><br />
+						<input id="tracker_prompt_maker" class="menu_button" type="submit" value="提詞製作工具" />
 					</div>
 				</div>
 			</details>
@@ -214,33 +214,33 @@
 
 			<!-- Other Settings -->
 			<div class="tracker-block m-b-1 m-t-1">
-				<label for="tracker_number_of_messages">Number of Recent Messages to Include</label><br />
-				<small>Set how many recent messages are included in tracker generation prompts. In Inline mode, this defines how many messages have trackers added.</small><br />
+				<label for="tracker_number_of_messages">納入的近期訊息數量</label><br />
+				<small>設定追蹤器生成提詞中包含的近期訊息數量。行內模式下，此數值決定有多少則訊息會加入追蹤器。</small><br />
 				<input max="99" min="1" class="text_pole" id="tracker_number_of_messages" type="number" />
 			</div>
 			<div class="tracker-block m-b-1 m-t-1">
-				<label for="tracker_generate_from_message">Message Number to Start Generating Tracker From</label>
-				<small>Specify which message (by number) the tracker starts generating from.</small><br />
+				<label for="tracker_generate_from_message">開始生成追蹤器的訊息編號</label>
+				<small>指定從第幾則訊息開始生成追蹤器。</small><br />
 				<input max="99" min="1" class="text_pole" id="tracker_generate_from_message" type="number" />
 			</div>
 			<div class="tracker-block m-b-1 m-t-1">
-				<label for="tracker_minimum_depth">Minimum Depth</label>
-				<small>Specify the minimum depth for a tracker to be injected at.</small><br />
+				<label for="tracker_minimum_depth">最小注入深度</label>
+				<small>指定追蹤器注入的最小深度。</small><br />
 				<input max="99" min="0" class="text_pole" id="tracker_minimum_depth" type="number" />
 			</div>
 			<div class="tracker-block m-b-1 m-t-1">
-				<label for="tracker_response_length">Response Length</label><br />
-				<small>Set a response token limit for tracker prompts. Leave blank or set to 0 to use the default response token limit.</small><br />
+				<label for="tracker_response_length">回應長度（Token 上限）</label><br />
+				<small>設定追蹤器提詞的回應 Token 上限。留空或設為 0 則使用預設 Token 上限。</small><br />
 				<input min="0" class="text_pole" id="tracker_response_length" type="number" />
 			</div>
 			<hr class="sysHR" />
 			<!-- Debug Mode -->
 			<div class="tracker-block flex-container">
 				<input id="tracker_debug" type="checkbox" />
-				<label for="tracker_debug">Enable Debug Logging</label>
+				<label for="tracker_debug">啟用除錯日誌</label>
 			</div>
 			<div class="tracker-block flex-container" style="flex-wrap: nowrap; overflow: hidden;">
-				<input id="tracker_reset_presets" class="menu_button" type="submit" value="Reset Default Presets" />
+				<input id="tracker_reset_presets" class="menu_button" type="submit" value="還原預設組合" />
 				<label for="tracker_reset_presets"></label>
 			</div>
 			<hr class="sysHR" />
