@@ -603,12 +603,14 @@ export class TrackerContentRenderer {
 
 	/**
 	 * Tokenizes the template string into an array of tokens.
+	 * Supports Unicode CJK characters in field names (e.g., 時間, 地點).
 	 * @param {string} template - The template string.
 	 * @returns {Array} - The array of tokens.
 	 */
 	tokenizeTemplate(template) {
 		const tokens = [];
-		const regex = /{{\s*(\/?)s*(#?)\s*([\w.]+|\^)\s*(.*?)\s*}}/g;
+		// Updated regex to support Unicode CJK characters (Chinese field names) in addition to \w and dot notation
+		const regex = /{{\s*(\/?)\s*(#?)\s*([\w\u4e00-\u9fff.]+|\^)\s*(.*?)\s*}}/g;
 		let cursor = 0;
 		let match;
 
