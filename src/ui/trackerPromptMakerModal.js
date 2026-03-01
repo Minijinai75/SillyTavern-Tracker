@@ -62,7 +62,7 @@ export class TrackerPromptMakerModal {
      * Updates the modal content with the Tracker Prompt Maker interface.
      */
     updateContent() {
-        this.modalContent.innerHTML = '<h3 class="tracker-modal-title">Tracker Prompt Maker</h3>';
+        this.modalContent.innerHTML = '<h3 class="tracker-modal-title">提詞製作工具</h3>';
 
         // Initialize TrackerPromptMaker with the tracker and onSave callback
         const trackerPromptMaker = new TrackerPromptMaker(this.tracker, (updatedTracker) => {
