@@ -50,16 +50,16 @@ export class TrackerInterface {
             <div id="trackerInterfaceheader" class="fa-solid fa-grip drag-grabber hoverglow"></div>
             <div id="trackerInterfaceClose" class="fa-solid fa-circle-xmark hoverglow dragClose"></div>
         </div>`;
-        const editorHeader = `<div id="trackerInterfaceHeader">Tracker</div>`;
+        const editorHeader = `<div id="trackerInterfaceHeader">追蹤器</div>`;
         const editorContainer = `<div id="trackerInterfaceContents" class="scrollY"></div>`;
         const editorFooter = `<div id="trackerInterfaceFooter">
-            <button id="trackerInterfaceViewButton" class="menu_button menu_button_default interactable" tabindex="0">View</button>
-            <button id="trackerInterfaceEditButton" class="menu_button menu_button_default interactable" tabindex="0">Edit</button>
-            <button id="trackerInterfaceRegenerateTracker" class="menu_button menu_button_default interactable" tabindex="0">Regenerate</button>
+            <button id="trackerInterfaceViewButton" class="menu_button menu_button_default interactable" tabindex="0">檢視</button>
+            <button id="trackerInterfaceEditButton" class="menu_button menu_button_default interactable" tabindex="0">編輯</button>
+            <button id="trackerInterfaceRegenerateTracker" class="menu_button menu_button_default interactable" tabindex="0">重新生成</button>
             <select id="trackerInterfaceRegenOptions" class="tracker-regen-options">
-                <option value="no-static">No Static Fields</option>
-                <option value="all-fields">All Fields</option>
-                <option value="static-only">Static Only</option>
+                <option value="no-static">不含靜態欄位</option>
+                <option value="all-fields">所有欄位</option>
+                <option value="static-only">僅靜態欄位</option>
             </select>
         </div>`;
 
@@ -100,7 +100,7 @@ export class TrackerInterface {
      */
     refreshContent(mode = 'view') {
         this.contentArea.empty();
-        this.editorHeader.text('Tracker' + (this.mesId ? ` - Message ${this.mesId}` : ''));
+        this.editorHeader.text('追蹤器' + (this.mesId ? ` - 訊息 ${this.mesId}` : ''));
 
         if (mode === 'view') {
             const contentElement = this.renderer.renderDefaultView(this.tracker);
@@ -153,7 +153,7 @@ export class TrackerInterface {
 
         // Show loading indicator
         this.contentArea.empty();
-        const loadingIndicator = $('<div class="tracker-loading">Regenerating Tracker...</div>');
+        const loadingIndicator = $('<div class="tracker-loading">正在重新生成追蹤器...</div>');
         this.contentArea.append(loadingIndicator);
         this.disableControls(true);
 
@@ -169,7 +169,7 @@ export class TrackerInterface {
             this.tracker = trackerUpdated;
             this.refreshContent(this.mode);
         } catch (e) {
-            toastr.error('Regeneration failed. Please try again.');
+            toastr.error('重新生成失敗，請再試一次。');
             error('Regeneration error:', e);
             this.refreshContent(this.mode);
         } finally {
@@ -221,9 +221,9 @@ export class TrackerInterface {
         // Add Tracker button to the extensions menu
         const trackerInterfaceButton = $(`
             <div class="extension_container interactable" id="tracker_ui_container" tabindex="0">
-                <div id="tracker-ui-item" class="list-group-item flex-container flexGap5 interactable" title="Open Tracker Interface" tabindex="0">
+                <div id="tracker-ui-item" class="list-group-item flex-container flexGap5 interactable" title="開啟追蹤器介面" tabindex="0">
                     <div class="extensionsMenuExtensionButton fa-solid fa-code"></div>
-                    Tracker
+                    追蹤器
                 </div>
             </div>
         `);
@@ -245,7 +245,7 @@ export class TrackerInterface {
 
         // Add tracker button to message template
         const showMessageTrackerButton = $(`
-            <div title="Show Message Tracker" class="mes_button mes_tracker_button fa-solid fa-code interactable" tabindex="0"></div>
+            <div title="顯示訊息追蹤器" class="mes_button mes_tracker_button fa-solid fa-code interactable" tabindex="0"></div>
         `);
         $("#message_template .mes_buttons .extraMesButtons").prepend(showMessageTrackerButton);
 
