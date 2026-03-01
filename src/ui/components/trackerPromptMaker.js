@@ -17,12 +17,12 @@ export class TrackerPromptMaker {
 
 	static get FIELD_TYPES() {
 		return {
-			STRING: "String",
-			ARRAY: "Array",
-			OBJECT: "Object",
-			FOR_EACH_OBJECT: "For Each Object",
-			FOR_EACH_ARRAY: "For Each Array",
-			ARRAY_OBJECT: "Array Object",
+			STRING: "字串",
+			ARRAY: "陣列",
+			OBJECT: "物件",
+			FOR_EACH_OBJECT: "逐一物件",
+			FOR_EACH_ARRAY: "逐一陣列",
+			ARRAY_OBJECT: "陣列物件",
 		};
 	}
 
@@ -32,9 +32,9 @@ export class TrackerPromptMaker {
 
 	static get FIELD_PRESENCE_OPTIONS() {
 		return {
-			DYNAMIC: "Dynamic",
-			EPHEMERAL: "Ephemeral",
-			STATIC: "Static",
+			DYNAMIC: "動態",
+			EPHEMERAL: "臨時",
+			STATIC: "靜態",
 		};
 	}
 
@@ -74,20 +74,20 @@ export class TrackerPromptMaker {
 		const buttonsWrapper = $('<div class="buttons-wrapper"></div>');
 
 		// Button to add a new field.
-		const addFieldBtn = $('<button class="menu_button interactable">Add Field</button>').on("click", () => {
+		const addFieldBtn = $('<button class="menu_button interactable">新增欄位</button>').on("click", () => {
 			this.addField(); // Add field without specifying parent (top-level)
 			this.rebuildBackendObjectFromDOM(); // Rebuild keys after adding a new field.
 		});
 		buttonsWrapper.append(addFieldBtn);
 
 		// Button to add example values to all fields.
-		const addExampleValueBtn = $('<button class="menu_button interactable">Add Example Value</button>').on("click", () => {
+		const addExampleValueBtn = $('<button class="menu_button interactable">新增範例值</button>').on("click", () => {
 			this.addExampleValueToAllFields();
 		});
 		buttonsWrapper.append(addExampleValueBtn);
 
 		// Button to remove example values from all fields.
-		const removeExampleValueBtn = $('<button class="menu_button interactable">Remove Example Value</button>').on("click", () => {
+		const removeExampleValueBtn = $('<button class="menu_button interactable">移除範例值</button>').on("click", () => {
 			this.removeExampleValueFromAllFields();
 		});
 		buttonsWrapper.append(removeExampleValueBtn);
@@ -192,8 +192,8 @@ export class TrackerPromptMaker {
 		nameDynamicTypeDiv.append(dragHandle);
 
 		// Field Name Input with label
-		const fieldNameLabel = $("<label>Field Name:</label>");
-		const fieldNameInput = $('<input type="text" class="text_pole" placeholder="Field Name">')
+		const fieldNameLabel = $("<label>欄位名稱：</label>");
+		const fieldNameInput = $('<input type="text" class="text_pole" placeholder="欄位名稱">')
 			.val(fieldData.name || "")
 			.on("input", (e) => {
 				const currentFieldId = fieldWrapper.attr("data-field-id");
@@ -203,7 +203,7 @@ export class TrackerPromptMaker {
 		const fieldNameDiv = $('<div class="field-name-wrapper"></div>').append(fieldNameLabel, fieldNameInput);
 
 		// Presence Selector with label
-		const presenceLabel = $("<label>Presence:</label>");
+		const presenceLabel = $("<label>存在方式：</label>");
 		const presenceKey = fieldData.presence || "DYNAMIC";
 		const presenceSelector = $(`
             <select>
@@ -221,7 +221,7 @@ export class TrackerPromptMaker {
 		const presenceDiv = $('<div class="presence-wrapper"></div>').append(presenceLabel, presenceSelector);
 
 		// Field Type Selector with label
-		const fieldTypeLabel = $("<label>Field Type:</label>");
+		const fieldTypeLabel = $("<label>欄位類型：</label>");
 		const fieldTypeKey = fieldData.type || "STRING";
 		const fieldTypeSelector = $(`
             <select>
@@ -248,8 +248,8 @@ export class TrackerPromptMaker {
 		const promptDefaultExampleWrapper = $('<div class="prompt-default-example-wrapper"></div>');
 
 		// Prompt Input with label
-		const promptLabel = $("<label>Prompt or Note:</label>");
-		const promptInput = $('<textarea type="text" class="text_pole" placeholder="Prompt or Note"></textarea>')
+		const promptLabel = $("<label>提詞或備注：</label>");
+		const promptInput = $('<textarea type="text" class="text_pole" placeholder="提詞或備注"></textarea>')
 			.val(fieldData.prompt || "")
 			.on("input", (e) => {
 				const currentFieldId = fieldWrapper.attr("data-field-id");
@@ -262,8 +262,8 @@ export class TrackerPromptMaker {
 		const defaultExampleWrapper = $('<div class="default-example-wrapper"></div>');
 
 		// Default Value Input with label
-		const defaultValueLabel = $("<label>Default Value:</label>");
-		const defaultValueInput = $('<input type="text" class="text_pole" placeholder="Default Value">')
+		const defaultValueLabel = $("<label>預設值：</label>");
+		const defaultValueInput = $('<input type="text" class="text_pole" placeholder="預設值">')
 			.val(fieldData.defaultValue || "")
 			.on("input", (e) => {
 				const currentFieldId = fieldWrapper.attr("data-field-id");
@@ -273,7 +273,7 @@ export class TrackerPromptMaker {
 		const defaultValueDiv = $('<div class="default-value-wrapper"></div>').append(defaultValueLabel, defaultValueInput);
 
 		// Example Values Heading and Container
-		const exampleValuesHeading = $("<h4>Example Values:</h4>");
+		const exampleValuesHeading = $("<h4>範例值：</h4>");
 		const exampleValuesContainer = $('<div class="example-values-container"></div>');
 
 		// Append default value div, example values heading, and container to defaultExampleWrapper
@@ -292,7 +292,7 @@ export class TrackerPromptMaker {
 		const buttonsWrapper = $('<div class="buttons-wrapper"></div>');
 
 		// Add Nested Field Button
-		const addNestedFieldBtn = $('<button class="menu_button interactable">Add Nested Field</button>')
+		const addNestedFieldBtn = $('<button class="menu_button interactable">新增巢狀欄位</button>')
 			.on("click", () => {
 				this.addField(null, fieldId);
 				// After adding a nested field, make it sortable
@@ -310,7 +310,7 @@ export class TrackerPromptMaker {
 		buttonsWrapper.append(addNestedFieldBtn);
 
 		// Remove Field Button
-		const removeFieldBtn = $('<button class="menu_button interactable">Remove Field</button>').on("click", () => {
+		const removeFieldBtn = $('<button class="menu_button interactable">移除欄位</button>').on("click", () => {
 			this.removeField(fieldId, fieldWrapper);
 		});
 		buttonsWrapper.append(removeFieldBtn);
@@ -383,7 +383,7 @@ export class TrackerPromptMaker {
 	 */
 	removeField(fieldId, fieldWrapper) {
 		// Confirm before removing
-		if (confirm("Are you sure you want to remove this field?")) {
+		if (confirm("確定要移除此欄位嗎？")) {
 			// Remove from backend object
 			this.deleteFieldDataById(fieldId);
 			// Remove from UI
@@ -422,8 +422,8 @@ export class TrackerPromptMaker {
 	 */
 	validateFieldName(name, fieldId) {
 		if (name.includes('"')) {
-			warn("Field name cannot contain double quotes.");
-			toastr.error("Field name cannot contain double quotes.");
+			warn("欄位名稱不可包含雙引號。");
+			toastr.error("欄位名稱不可包含雙引號。");
 			return false;
 		}
 		const fieldData = this.getFieldDataById(fieldId);
@@ -448,7 +448,7 @@ export class TrackerPromptMaker {
 			fieldData.type = type || "STRING";
 			debug(`Selected field type: ${type} for field ID: ${fieldId}`);
 			const fieldWrapper = this.element.find(`[data-field-id="${fieldId}"]`);
-			const addNestedFieldBtn = fieldWrapper.find(".menu_button:contains('Add Nested Field')");
+			const addNestedFieldBtn = fieldWrapper.find(".menu_button:contains('新增巢狀欄位')");
 			const isNestingType = TrackerPromptMaker.NESTING_FIELD_TYPES.includes(type);
 			addNestedFieldBtn.toggle(isNestingType);
 		} else {
@@ -584,7 +584,7 @@ export class TrackerPromptMaker {
 		const fieldId = fieldWrapper.attr("data-field-id");
 
 		// Example value input
-		const exampleValueInput = $('<input class="text_pole" type="text" placeholder="Example Value">')
+		const exampleValueInput = $('<input class="text_pole" type="text" placeholder="範例值">')
 			.val(exampleValue)
 			.on("input", (e) => {
 				const currentFieldId = fieldWrapper.attr("data-field-id");
@@ -701,7 +701,7 @@ export class TrackerPromptMaker {
 			debug("Populated from existing object.");
 		} catch (err) {
 			error("Error populating from existing object:", err);
-			toastr.error("Failed to load data.");
+			toastr.error("資料載入失敗。");
 		}
 	}
 
